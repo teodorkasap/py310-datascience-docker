@@ -1,0 +1,16 @@
+services:
+  env:
+    image: rl-baselines3-eecstm
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    tty: true        # docker run -t
+    stdin_open: true # docker run -i
+    volumes:
+      - .:/home
+    working_dir: /home
+    # command: nvidia-smi
